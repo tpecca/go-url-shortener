@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>URL Shortener</title>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>URL Shortener</h1>
+        <form action="/submit" method="POST" id="urlForm">
+            <div class="input-group">
+                <input type="url" id="url" name="url" placeholder="Enter your URL here" required>
+            </div>
+            <button type="submit">Shorten URL</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('urlForm').addEventListener('submit', function(e) {
+        const url = document.getElementById('url').value;
+        if (!url.match(/^(http|https):\/\/[^ "]+$/)) {
+            e.preventDefault();
+            alert('Please enter a valid URL starting with http:// or https://');
+        }
+    });
+</script>
+</body>
+</html>
